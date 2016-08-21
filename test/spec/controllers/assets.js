@@ -6,7 +6,7 @@ describe('Controller: AssetsCtrl', function () {
   beforeEach(module('assetManagerApp'));
 
   var AssetsCtrl,
-    scope;
+      scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
@@ -17,7 +17,7 @@ describe('Controller: AssetsCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(AssetsCtrl.awesomeThings.length).toBe(3);
+  it('should get all assets', function () {
+    expect(AssetsCtrl.all).toBe(3);
   });
 });
