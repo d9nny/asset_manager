@@ -1,1 +1,44 @@
-<p>This is the assets view.</p>
+<section>
+	
+	<h1>Assets</h1>
+
+	<div id='asset-controls'>
+
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Search</button>
+      </span>
+    </div><!-- /input-group -->
+
+		<button class='btn' ng-show='alphabetical' ng-click=''>A-Z</button>
+		<button class='btn' ng-show='!alphabetical' ng-click=''>Z-A</button>
+
+		<div class="btn-group">
+		  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
+		  				aria-expanded="false">TYPE<span class="caret"></span></button>
+		  <ul class="dropdown-menu">
+		    <li ng-repeat='type in types' ng-click='filterType()'><a href="#">{{type}}</a></li>
+		  </ul>
+		</div>
+
+	</div>
+
+	<table class='table table-striped'>
+		<thead>
+			<th class='text-center'>Name</th>
+			<th class='text-center'>Description</th>
+			<th class='text-center'>Type</th>
+			<th class='text-center'>Qty</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat='asset in assets'>
+				<td class='text-center'>{{asset.name}}</td>
+				<td class='text-center'>{{asset.description}}</td>
+				<td class='text-center'>{{asset.type}}</td>
+				<td class='text-center'>{{asset.qty}}</td>
+			</tr>
+		</tbody>	
+	</table>
+
+</section>
