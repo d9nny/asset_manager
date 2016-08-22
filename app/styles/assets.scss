@@ -1,3 +1,30 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+$orangeColour: #f36f3b;
+$blueColour: #192B33;
+$whiteColour: #fff;
+
+@mixin defaultType {
+	color: $blueColour;
+	letter-spacing: 2px;
+	font-family: '';
+}
+
 .capitalise {
    text-transform: capitalize;
+}
+
+.asset-data {
+	line-height: 2.428571;
+}
+
+#asset-controls {
+	@include defaultType;
+}
+
+#asset-tables {
+	@include defaultType;
 }

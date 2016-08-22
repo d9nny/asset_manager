@@ -1,4 +1,4 @@
-<section>
+<section class='container'>
 	
 	<h1>Assets</h1>
 	<br/><br/>
@@ -6,7 +6,7 @@
 	<div class='row' id='asset-controls'>
 		<div class='col-md-8'>
 	    <div class="input-group">
-	      <input type="text" class="form-control" ng-model='searchTerm' placeholder="Search for...">
+	      <input type="text" class="form-control" ng-model='filter' placeholder="Search for...">
 	      <span class="input-group-btn">
 	        <button class="btn btn-default" ng-click='assets.setFilter(searchTerm)'>Search</button>
 	      </span>
@@ -14,25 +14,27 @@
 	  </div>
 
 	  <div class='col-md-4'>
+			<button class='btn btn-default pull-right' ng-if='assets.alphabetical' 
+							ng-click='assets.sortZA()'>Z-A</button>
+			<button class='btn btn-default pull-right' ng-if='!assets.alphabetical' 
+							ng-click='assets.sortAZ()'>A-Z</button>
+
 			<div class="btn-group pull-right">
 			  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 
-			  				aria-expanded="false">Type<span class="caret"></span></button>
+			  				aria-expanded="false">Type  <span class="caret"></span></button>
 			  <ul class="dropdown-menu">
 			  	<li ng-click='assets.setFilter()'><a href=''>All</a></li>
 			    <li ng-repeat='type in assets.types' ng-click='assets.setFilter(type)'><a href='' class='capitalise'>{{type}}</a></li>
 			  </ul>
 			</div>
-			<button class='btn btn-default pull-right'  ng-click='assets.sortZA()'>Z-A</button>
-			<button class='btn btn-default pull-right'  ng-click='assets.sortAZ()'>A-Z</button>
 		</div>
 	</div>
 	<br/>
 
-	<table class='table table-striped table-borders'>
+	<table class='table table-striped table-borders' id='asset-table'>
 		<thead>
 			<tr>
 				<th class='text-center'>Name</th>
-				<th class='text-center'>Description</th>
 				<th class='text-center'>Type</th>
 				<th class='text-center'>Qty</th>
 				<th></th>
@@ -40,20 +42,17 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat='asset in assets.all | filter: assets.filter'>
-				<td class='text-center capitalise'>
+				<td class='text-center capitalise asset-data'>
 					<span editable-text='asset.name' e-name='name' e-form='rowform' e-required>{{asset.name}}</span>
 				</td>
-				<td class='capitalise'>
-					<span editable-text='asset.description' e-name='description' e-form='rowform' e-required>{{asset.description}}</span>
-				</td>
-				<td class='text-center capitalise'>
+				<td class='text-center capitalise asset-data'>
 					<span editable-text='asset.type' e-name='type' e-form='rowform' e-required>{{asset.type}}</span>
 				</td>
-				<td class='text-center'>
+				<td class='text-center asset_data'>
 					<span editable-text='asset.qty' e-name='qty' e-form='rowform' e-required>{{asset.qty}}
 				</td>
 
-	      <td style="white-space: nowrap">
+	      <td style="white-space: nowrap" class='text-center'>
 	        <form editable-form name="rowform"
 	        			onaftersave="assets.update(asset.id, $data)"
 	       				ng-show="rowform.$visible"

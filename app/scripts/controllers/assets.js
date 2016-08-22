@@ -5,23 +5,25 @@ angular.module('assetManagerApp')
   	var ctrl = this,
   			service = AssetModel;
 
+  	ctrl.alphabetical = true;
+
   	function getAll() {
 			// service.all()
 			// 	.then(function(result) {
 			// 		ctrl.all = result.data;
 			// 	})
 			// console.log(ctrl.all);
-			ctrl.all = service.all()
+			ctrl.all = service.all();
   	}
 
   	function getTypes() {
 			var tempArray = [];
   		for(var i=0; i < ctrl.all.length; i++) {
-				tempArray.push(ctrl.all[i].type)
+				tempArray.push(ctrl.all[i].type);
 			}
 			ctrl.types = tempArray.filter(function(item, pos) {
 				return tempArray.indexOf(item) == pos;
-			})
+			});
   	}
 
   	getAll();
