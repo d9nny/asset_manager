@@ -6,7 +6,6 @@
 	<div class='row' id='asset-controls'>
 		<div class='col-md-8'>
 	    <form class="input-group" name='myForm'>
-	      <!-- <input type="text" class="form-control" ng-model='filter' placeholder="Search for..."> -->
 	       <input type="text" class="form-control" name='mySearch' ng-model="assets.searchTerm" ng-change="myForm.mySearch.$valid && assets.setFilter()" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" required>
 	      <span class="input-group-btn">
 	        <button class="btn btn-default" ng-click='assets.setFilter()'>Search</button>
