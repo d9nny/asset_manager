@@ -4,27 +4,59 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 $orangeColour: #f36f3b;
-$blueColour: #192B33;
+$blueColour: #35454c;
 $whiteColour: #fff;
 
-@mixin defaultType {
+@mixin defaultSmallText {
 	color: $blueColour;
-	letter-spacing: 2px;
-	font-family: '';
+	letter-spacing: 1px;
+	font-weight: 200;
+}
+
+#assets h1 {
+	margin: 30px;
+	letter-spacing: 5px;
+}
+
+.table {
+	@include defaultSmallText;
+	margin-top: 30px;
+
+	tbody > tr > td.asset-data {
+		line-height: 2.428571;
+	}
 }
 
 .capitalise {
    text-transform: capitalize;
 }
 
-.asset-data {
-	line-height: 2.428571;
-}
-
 #asset-controls {
-	@include defaultType;
+	@include defaultSmallText;
 }
 
-#asset-tables {
-	@include defaultType;
+	#new-asset-button {
+		@include defaultSmallText;
+		margin-left: 20px;
+		background-color: $orangeColour;
+
+		a{
+			color: $whiteColour;
+			text-decoration: none;
+		}
+
+		a:hover,
+		a:focus {
+			color: $blueColour;
+		}
+	}
+
+.asset-table {
+	th {
+		@include defaultSmallText;
+	}
+
+	.asset-data {
+		@include defaultSmallText;
+	}
 }

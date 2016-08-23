@@ -4,29 +4,54 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 $orangeColour: #f36f3b;
-$blueColour: #192B33;
+$blueColour: #35454c;
+$blueColourFade: rgba(25, 43, 51, .6);;
 $whiteColour: #fff;
 
-#asset-button {
-  margin-top: 20px;
-  background-color: $blueColour;
-  color: $whiteColour;
-  font-size: 20px;
-  height: 60px;
-  width: 170px;
+@mixin defaultText {
+  letter-spacing: 2px;
+  font-weight: 200;
+}
 
-  a{
-    color: $whiteColour;
-  }
+div.jumbotron {
+  padding-bottom: 0;
+  background-color: $whiteColour;
 
-  a:hover,
-  a:focus {
-    color: $orangeColour;
-    text-decoration: none;
+  img {
+    margin-top: 50px;
   }
 }
 
-#jumbotron-message {
-  background-color: $blueColour;
-  opacity: 0.8;
+div#jumbotron-message {
+  @include defaultText;
+  display: inline-block;
+  width: 100%;
+  margin: auto;
+  text-align: -webkit-center;
+
+  h1, h2 {
+    color: $blueColour;
+  }
+
+  button#asset-button {
+    margin-top: 25px;
+    padding: 20px 40px;
+    background-color: $blueColour;
+
+    a {
+      @include defaultText;
+      font-size: 25px;
+      letter-spacing: 2px;
+      color: $whiteColour;
+      font-weight: 200;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      color: $orangeColour;
+      text-decoration: none;
+    }
+  }
 }
+

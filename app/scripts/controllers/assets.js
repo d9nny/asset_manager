@@ -41,8 +41,8 @@ angular.module('assetManagerApp')
   		service.destroy(assetID);
   	}
 
-  	ctrl.setFilter = function(filter) {
-  		ctrl.filter = filter;
+  	ctrl.setFilter = function() {
+  		ctrl.filter = ctrl.searchTerm;
   	}
 
   	ctrl.sortAZ = function() {

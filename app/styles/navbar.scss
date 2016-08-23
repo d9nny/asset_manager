@@ -4,8 +4,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 $orangeColour: #f36f3b;
-$blueColour: #192B33;
+$blueColour: #35454c;
 $whiteColour: #fff;
+
+@mixin defaultText {
+  letter-spacing: 2px;
+  font-weight: 200;
+}
 
 .browsehappy {
   margin: 0.2em 0;
@@ -16,7 +21,6 @@ $whiteColour: #fff;
 
 body {
   padding: 0;
-  letter-spacing: 2px;
 }
 
 .navbar, .navbar-brand, .navbar-collapse {
@@ -39,6 +43,7 @@ body {
   
   .dropdown-toggle {
     span {
+      @include defaultText;
       font-size: 20px;
       color: $whiteColour;
     }
@@ -55,6 +60,7 @@ body {
   }
 
     .dropdown-menu > li > a {
+      @include defaultText;
       line-height: 3.428571;
       color: $whiteColour;
       font-size: 20px;
@@ -62,7 +68,6 @@ body {
       border-bottom: 1px solid $blueColour;
       width: 80%;
       margin: auto;
-      font-weight: 200;
     }   
 
     .dropdown-menu > .active > a, 
@@ -95,4 +100,8 @@ body {
   right: -150px;
   border-radius: 0;
   background-color: $orangeColour;
+}
+
+.not-working {
+  text-decoration: line-through;
 }
