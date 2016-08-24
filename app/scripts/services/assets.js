@@ -3,7 +3,7 @@
 angular.module('assetManagerApp')
   .service('AssetModel', ['$http', 'ENDPOINT_URI', function($http, ENDPOINT_URI) {
   	var service = this,
-  			path = 'assets/';
+  			path = 'Assets/';
 
   	function getUrl() {
 		  return ENDPOINT_URI + path;
@@ -14,8 +14,7 @@ angular.module('assetManagerApp')
 		}
 
   	service.all = function () {
-  		return service.sortAZ([{id: 0, name: 'car', type: 'transport', qty: 5}, { id: 1, name: 'bike', type: 'transport', qty: 20}, {id: 2, name: 'van', type: 'transport', qty: 2}, {id: 3, name: 'printer', type: 'tech', qty: 3}, {name: 'computer', type: 'tech', qty: 20}]);
-		  // return $http.get(getUrl());
+		  return $http.get(getUrl());
 		};
 
 		service.create = function (item) {

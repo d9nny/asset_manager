@@ -15,11 +15,11 @@
       </div>
       <div class="form-group" ng-class="{'has-error': !assetForm.qty.$valid}">
         <label for="qty">Qty</label>
-        <input type="number" name="qty" ng-model="assets.newAsset.type" class="form-control" required />
+        <input type="number" name="qty" ng-model="assets.newAsset.qty" class="form-control" required />
       </div>
       <div class="actions pull-right">
         <a ng-href="#/assets" class="btn btn-default">Back</a>
-        <button class="btn btn-primary" ng-click="assets.new()" ng-disabled="!assetForm.$valid">Save</button>
+        <button class="btn btn-primary" ng-href="#/assets" ng-click="assets.new()" ng-disabled="!assetForm.$valid">Save</button>
       </div>
     </form>
 	</div>

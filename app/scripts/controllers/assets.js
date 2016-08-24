@@ -1,19 +1,22 @@
 'use strict';
 
 angular.module('assetManagerApp')
-  .controller('AssetsCtrl', ['AssetModel', function(AssetModel) {
+  .controller('AssetsCtrl', ['AssetModel', '$location', function(AssetModel, $location) {
   	var ctrl = this,
-  			service = AssetModel;
+  			AssetModel;
 
   	ctrl.alphabetical = true;
 
   	function getAll() {
-			// service.all()
-			// 	.then(function(result) {
-			// 		ctrl.all = result.data;
-			// 	})
-			// console.log(ctrl.all);
-			ctrl.all = service.all();
+			AssetModel.all()
+				.then(function(result) {
+					ctrl.all = result.data.sort(function(a,b) { 
+            var textA = a.name.toUpperCase(),
+                textB = b.name.toUpperCase();
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+          });
+          getTypes();
+				})
   	}
 
   	function getTypes() {
@@ -27,23 +30,24 @@ angular.module('assetManagerApp')
   	}
 
   	getAll();
-		getTypes();
   	
-  	ctrl.new = function(asset) {
-  		service.create(asset);
+  	ctrl.new = function() {
+  		AssetModel.create(ctrl.newAsset);
+      $location.path('/assets');
   	}
 
   	ctrl.update = function(assetID, asset) {
-  		service.update(assetID, asset)
+  		AssetModel.update(assetID, asset)
   	}
 
-  	ctrl.delete = function(assetID) {
-  		service.destroy(assetID);
+  	ctrl.delete = function(assetID, asset) {
+  		AssetModel.destroy(assetID);
+      var index = ctrl.all.indexOf(asset);
+      ctrl.all.splice(index, 1);     
   	}
 
   	ctrl.setFilter = function(filter) {
       var filter = filter || ctrl.searchTerm;
-      console.log(filter)
   		ctrl.filter = filter;
   	}
 
