@@ -20,26 +20,26 @@ Depending on the asset type, it could also have additional, non mandatory, value
 
 ## Build & development
 
-From the root directory, run
+From the root directory:
+
+To build, run
 ```sh
 $ grunt
 ```
-to build and
+to preview, run
 ```sh
 $ grunt serve
 ```
-for preview.
 
-To run the database, in a second terminal navigate into the api folder and run
+From the api directory:
+
+To run the database, in a second terminal run
 ```sh
-$ npm install' 
-```
-```sh
+$ npm install
 $ mongod
 ```
 
-To run the api, in a third terminal navigate into the api folder and run 
-followed by 
+To run the api, in a third terminal run 
 ```sh
 $ slc run
 ```
