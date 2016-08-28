@@ -1,20 +1,25 @@
 'use strict';
 
 angular.module('assetManagerApp')
-  .controller('AssetsCtrl', ['AssetModel', '$location', function(AssetModel, $location) {
+  .controller('AssetsCtrl', ['Api', 'ENDPOINT_URI', '$location', function(Api, ENDPOINT_URI, $location) {
   	var ctrl = this,
-  			AssetModel;
+        path = 'Assets/';
 
   	ctrl.alphabetical = true;
 
+    function getUrl() {
+      return ENDPOINT_URI + path;
+    }
+
+    function getUrlForId(assetID) {
+      return getUrl(path) + assetID;
+    }
+
   	function getAll() {
-			AssetModel.all()
+			Api.getAll(getUrl())
 				.then(function(result) {
-					ctrl.all = result.data.sort(function(a,b) { 
-            var textA = a.name.toUpperCase(),
-                textB = b.name.toUpperCase();
-            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-          });
+					ctrl.all = result.data;
+          ctrl.sortAZ();
           getTypes();
 				})
   	}
@@ -32,16 +37,16 @@ angular.module('assetManagerApp')
   	getAll();
   	
   	ctrl.new = function() {
-  		AssetModel.create(ctrl.newAsset);
+  		Api.create(getUrl(), ctrl.newAsset);
       $location.path('/assets');
   	}
 
   	ctrl.update = function(assetID, asset) {
-  		AssetModel.update(assetID, asset)
+  		Api.update(getUrlForId(assetID), asset)
   	}
 
   	ctrl.delete = function(assetID, asset) {
-  		AssetModel.destroy(assetID);
+  		Api.destroy(getUrlForId(assetID));
       var index = ctrl.all.indexOf(asset);
       ctrl.all.splice(index, 1);     
   	}

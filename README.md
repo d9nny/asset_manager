@@ -44,7 +44,12 @@ followed by
 $ slc run
 ```
 
-
 ## Testing
 
-Running `grunt test` will run the unit tests with karma.
+NOT WORKING YET!
+
+To run the unit tests with karma, run
+
+```sh
+ $ grunt test
+```
