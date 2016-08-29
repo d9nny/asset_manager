@@ -46,8 +46,6 @@ $ slc run
 
 ## Testing
 
-NOT WORKING YET!
-
 To run the unit tests with karma, run
 
 ```sh
