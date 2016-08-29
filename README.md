@@ -20,7 +20,7 @@ Depending on the asset type, it could also have additional, non mandatory, value
 
 ## Build & development
 
-From the root directory:
+####From the root directory
 
 To build, run
 ```sh
@@ -31,7 +31,7 @@ to preview, run
 $ grunt serve
 ```
 
-From the api directory:
+####From the api directory
 
 To run the database, in a second terminal run
 ```sh
